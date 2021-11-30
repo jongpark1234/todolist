@@ -16,16 +16,18 @@ function deleteTodo(event) { // Todolist 내의 요소를 삭제하는 함수
     saveTodo() // 삭제하고싶은 원소를 제외한 뒤 localStorage 에 저장함
 }
 function paintTodo(newTodo) { // Todolist에 항목을 추가하는 함수
-    const li = document.createElement('li') // li 태그를 'li'라는 상수에 저장
-    li.id = newTodo.id // li 태그에 해당 인자가 가진 id를 저장시켜줌.
-    const span = document.createElement('span') // span 태그를 'span' 라는 상수에 저장
-    span.innerText = newTodo.text // 매개 변수로 받아온 'newTodo'값 (내가 적은 값)의 text 부분을 span 상수의 안쪽 텍스트에 저장
-    const button = document.createElement('button') // button 태그를 'button' 라는 상수에 저장
-    button.innerText = '❌' // 버튼 내의 텍스트를 '❌'라는 특수문자로 지정
-    button.addEventListener('click', deleteTodo) // 버튼 클릭 이벤트를 받으면 deleteTodo라는 함수를 실행함
-    li.appendChild(span) // li에 span을 상속시킴
-    li.appendChild(button) // li에 button을 상속시킴
-    todoList.appendChild(li) // todoList에 li를 상속시킴. 'todoList'는 "todo-list" 라는 Id를 가진 전역 상수
+    if (newTodo.text != "") { // 만약 newTodo.text 가 공백이 아니라면 ( 빈 칸이 아니라면 )
+        const li = document.createElement('li') // li 태그를 'li'라는 상수에 저장
+        li.id = newTodo.id // li 태그에 해당 인자가 가진 id를 저장시켜줌.
+        const span = document.createElement('span') // span 태그를 'span' 라는 상수에 저장
+        span.innerText = newTodo.text // 매개 변수로 받아온 'newTodo'값 (내가 적은 값)의 text 부분을 span 상수의 안쪽 텍스트에 저장
+        const button = document.createElement('button') // button 태그를 'button' 라는 상수에 저장
+        button.innerText = '✓' // 버튼 내의 텍스트를 '✓'라는 문자로 지정
+        button.addEventListener('click', deleteTodo) // 버튼 클릭 이벤트를 받으면 deleteTodo라는 함수를 실행함
+        li.appendChild(span) // li에 span을 상속시킴
+        li.appendChild(button) // li에 button을 상속시킴
+        todoList.appendChild(li) // todoList에 li를 상속시킴. 'todoList'는 "todo-list" 라는 Id를 가진 전역 상수
+    }
 }
 function handleTodoSubmit(event){
     event.preventDefault() // 버튼을 눌렀을 때의 새로고침을 막음
