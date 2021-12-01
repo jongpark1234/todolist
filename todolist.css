@@ -61,7 +61,10 @@ li {
     display: flex;
     font-weight: bold;
     font-size: 16px;
+    align-items: center;
 }
+
+
 button {
     width: 40px;
     height: 40px;
